@@ -71,7 +71,7 @@ st.markdown("""
         }
     }
 </style>
-""", unsafe_html=True)
+""", unsafe_allow_html=True)
 
 # Initialize Session State
 if "step" not in st.session_state:
@@ -137,14 +137,14 @@ st.markdown(f"""
         <span>{progress_percentage}% Complete</span>
     </div>
 </div>
-""", unsafe_html=True)
+""", unsafe_allow_html=True)
 st.progress(progress_percentage / 100.0)
 
-st.markdown('<div class="saas-card">', unsafe_html=True)
+st.markdown('<div class="saas-card">', unsafe_allow_html=True)
 
 if st.session_state.step == 1:
-    st.markdown('<div class="question-title">Step 1: Car Model</div>', unsafe_html=True)
-    st.markdown('<div class="question-desc">Which manufacturer and model is your car?</div>', unsafe_html=True)
+    st.markdown('<div class="question-title">Step 1: Car Model</div>', unsafe_allow_html=True)
+    st.markdown('<div class="question-desc">Which manufacturer and model is your car?</div>', unsafe_allow_html=True)
     
     # Capitalize model name for display
     car_name = st.selectbox(
@@ -159,8 +159,8 @@ if st.session_state.step == 1:
         st.button("Next Question →", on_click=next_step, type="primary")
 
 elif st.session_state.step == 2:
-    st.markdown('<div class="question-title">Step 2: Manufacturing Year</div>', unsafe_html=True)
-    st.markdown('<div class="question-desc">In which year was your car manufactured?</div>', unsafe_html=True)
+    st.markdown('<div class="question-title">Step 2: Manufacturing Year</div>', unsafe_allow_html=True)
+    st.markdown('<div class="question-desc">In which year was your car manufactured?</div>', unsafe_allow_html=True)
     
     year = st.number_input(
         "Year of Manufacture",
@@ -178,8 +178,8 @@ elif st.session_state.step == 2:
         st.button("Next Question →", on_click=next_step, type="primary")
 
 elif st.session_state.step == 3:
-    st.markdown('<div class="question-title">Step 3: Original Showroom Price</div>', unsafe_html=True)
-    st.markdown('<div class="question-desc">What is/was the showroom price of a brand-new car of this model (in Lakhs, e.g. 5.5 Lakhs is ~550,000 INR)?</div>', unsafe_html=True)
+    st.markdown('<div class="question-title">Step 3: Original Showroom Price</div>', unsafe_allow_html=True)
+    st.markdown('<div class="question-desc">What is/was the showroom price of a brand-new car of this model (in Lakhs, e.g. 5.5 Lakhs is ~550,000 INR)?</div>', unsafe_allow_html=True)
     
     known = st.checkbox("I know the showroom price", value=st.session_state.present_price_known)
     st.session_state.present_price_known = known
@@ -204,8 +204,8 @@ elif st.session_state.step == 3:
         st.button("Next Question →", on_click=next_step, type="primary")
 
 elif st.session_state.step == 4:
-    st.markdown('<div class="question-title">Step 4: Mileage / Kilometers Driven</div>', unsafe_html=True)
-    st.markdown('<div class="question-desc">How many total kilometers has your car been driven?</div>', unsafe_html=True)
+    st.markdown('<div class="question-title">Step 4: Mileage / Kilometers Driven</div>', unsafe_allow_html=True)
+    st.markdown('<div class="question-desc">How many total kilometers has your car been driven?</div>', unsafe_allow_html=True)
     
     kms = st.number_input(
         "Total Kilometers Driven",
@@ -223,8 +223,8 @@ elif st.session_state.step == 4:
         st.button("Next Question →", on_click=next_step, type="primary")
 
 elif st.session_state.step == 5:
-    st.markdown('<div class="question-title">Step 5: Fuel Type</div>', unsafe_html=True)
-    st.markdown('<div class="question-desc">What type of fuel does your car consume?</div>', unsafe_html=True)
+    st.markdown('<div class="question-title">Step 5: Fuel Type</div>', unsafe_allow_html=True)
+    st.markdown('<div class="question-desc">What type of fuel does your car consume?</div>', unsafe_allow_html=True)
     
     fuels = list(utils.FUEL_MAPPING.keys())
     fuel = st.selectbox(
@@ -241,8 +241,8 @@ elif st.session_state.step == 5:
         st.button("Next Question →", on_click=next_step, type="primary")
 
 elif st.session_state.step == 6:
-    st.markdown('<div class="question-title">Step 6: Seller Type</div>', unsafe_html=True)
-    st.markdown('<div class="question-desc">Are you selling as an individual owner, or through a dealer?</div>', unsafe_html=True)
+    st.markdown('<div class="question-title">Step 6: Seller Type</div>', unsafe_allow_html=True)
+    st.markdown('<div class="question-desc">Are you selling as an individual owner, or through a dealer?</div>', unsafe_allow_html=True)
     
     sellers = list(utils.SELLER_MAPPING.keys())
     seller = st.selectbox(
@@ -259,8 +259,8 @@ elif st.session_state.step == 6:
         st.button("Next Question →", on_click=next_step, type="primary")
 
 elif st.session_state.step == 7:
-    st.markdown('<div class="question-title">Step 7: Transmission Type</div>', unsafe_html=True)
-    st.markdown('<div class="question-desc">What transmission type does your car have?</div>', unsafe_html=True)
+    st.markdown('<div class="question-title">Step 7: Transmission Type</div>', unsafe_allow_html=True)
+    st.markdown('<div class="question-desc">What transmission type does your car have?</div>', unsafe_allow_html=True)
     
     trans_options = list(utils.TRANSMISSION_MAPPING.keys())
     trans = st.selectbox(
@@ -277,8 +277,8 @@ elif st.session_state.step == 7:
         st.button("Next Question →", on_click=next_step, type="primary")
 
 elif st.session_state.step == 8:
-    st.markdown('<div class="question-title">Step 8: Number of Previous Owners</div>', unsafe_html=True)
-    st.markdown('<div class="question-desc">How many previous owners has this car had before you?</div>', unsafe_html=True)
+    st.markdown('<div class="question-title">Step 8: Number of Previous Owners</div>', unsafe_allow_html=True)
+    st.markdown('<div class="question-desc">How many previous owners has this car had before you?</div>', unsafe_allow_html=True)
     
     owner = st.selectbox(
         "Previous Owners",
@@ -294,8 +294,8 @@ elif st.session_state.step == 8:
         st.button("Review Summary →", on_click=next_step, type="primary")
 
 elif st.session_state.step == 9:
-    st.markdown('<div class="question-title">Summary of Answers</div>', unsafe_html=True)
-    st.markdown('<div class="question-desc">Review your car details before generating the selling value prediction.</div>', unsafe_html=True)
+    st.markdown('<div class="question-title">Summary of Answers</div>', unsafe_allow_html=True)
+    st.markdown('<div class="question-desc">Review your car details before generating the selling value prediction.</div>', unsafe_allow_html=True)
     
     show_price = f"{st.session_state.present_price:.2f} Lakhs" if st.session_state.present_price_known else "Unknown (using standard average)"
     
@@ -310,7 +310,7 @@ elif st.session_state.step == 9:
     | **Seller Type** | {st.session_state.seller_type} |
     | **Transmission** | {st.session_state.transmission} |
     | **Previous Owners** | {st.session_state.owner} |
-    """, unsafe_html=True)
+    """, unsafe_allow_html=True)
     
     st.write("")
     
@@ -344,7 +344,7 @@ elif st.session_state.step == 9:
                     This represents the estimated price (in Lakhs) you could sell your car for on the pre-owned market, based on its age, showroom price, odometer reading, fuel type, transmission, and owner count.
                 </p>
             </div>
-            """, unsafe_html=True)
+            """, unsafe_allow_html=True)
             st.balloons()
         except Exception as e:
             st.error(f"Prediction failed: {e}")
@@ -352,4 +352,4 @@ elif st.session_state.step == 9:
     st.write("")
     st.button("🔄 Restart Assessment", on_click=reset_wizard)
 
-st.markdown('</div>', unsafe_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
